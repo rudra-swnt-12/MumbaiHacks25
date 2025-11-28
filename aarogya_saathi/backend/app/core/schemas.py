@@ -22,7 +22,7 @@ class ProfileUpdate(BaseModel):
     phone_number: str
     full_name: str
     age: int
-    gender: str
+    gender: Optional[str] = None
 
 
 # Consultation Logs for Doctor (via Portal)
