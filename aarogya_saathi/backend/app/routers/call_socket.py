@@ -182,17 +182,17 @@ async def phone_stream_endpoint(websocket: WebSocket):
             else:
                 # First, analyze for symptoms (fever, cough, etc.)
                 symptom_analysis = symptom_agent.analyze(primary_transcript)
-                
+
                 if symptom_analysis["has_symptoms"]:
                     # Patient is reporting symptoms - provide doctor-like advice
                     print(f"SYMPTOMS DETECTED: {symptom_analysis['symptoms_detected']}")
                     print(f"PRIORITY: {symptom_analysis['priority']}")
-                    
+
                     symptom_context = symptom_agent.get_llm_context()
-                    
+
                     # Get clinical risk for additional context
                     clinical_risk = checkin_agent.get_risk_score()
-                    
+
                     full_context = f"""
                     {symptom_context}
                     
@@ -205,9 +205,11 @@ async def phone_stream_endpoint(websocket: WebSocket):
                     2. What medicines might help (if safe to suggest)
                     3. When to seek hospital care
                     """
-                    
+
                     _, response_text = await groq_service.generate_response(
-                        primary_transcript, context=full_context, is_symptom_consultation=True
+                        primary_transcript,
+                        context=full_context,
+                        is_symptom_consultation=True,
                     )
                 else:
                     # No symptoms - handle as check-in/medication flow

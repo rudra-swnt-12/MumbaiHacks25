@@ -54,7 +54,9 @@ class GroqService:
             print(f"Extraction Error: {e}")
             return {}
 
-    async def generate_response(self, user_input, context: str = "", is_symptom_consultation: bool = False) -> tuple[str, str]:
+    async def generate_response(
+        self, user_input, context: str = "", is_symptom_consultation: bool = False
+    ) -> tuple[str, str]:
         text_input = user_input
         if isinstance(user_input, list):
             text_input = user_input[0]["text"] if user_input else ""

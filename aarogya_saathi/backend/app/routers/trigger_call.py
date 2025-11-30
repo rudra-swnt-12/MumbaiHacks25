@@ -16,7 +16,9 @@ async def trigger_call(phone: str = Body(..., embed=True)):
     service = TwilioService()
     sid = service.make_call(phone)
     if sid is None:
-        return JSONResponse(status_code=500, content={"status": "error", "message": "Call failed"})
+        return JSONResponse(
+            status_code=500, content={"status": "error", "message": "Call failed"}
+        )
     if sid == "simulated_sid":
         return {"status": "ok", "mode": "simulated", "sid": sid}
     return {"status": "ok", "sid": sid}

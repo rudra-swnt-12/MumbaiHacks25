@@ -5,7 +5,12 @@ from app.core.config import settings
 from pydantic import BaseModel
 from passlib.context import CryptContext
 from app.core.database import get_db, Patient, Doctor
-from app.core.schemas import LoginRequest, VerifyRequest, DoctorLoginRequest, ProfileUpdate
+from app.core.schemas import (
+    LoginRequest,
+    VerifyRequest,
+    DoctorLoginRequest,
+    ProfileUpdate,
+)
 import random
 
 router = APIRouter()
