@@ -44,7 +44,7 @@ For detailed installation instructions, please refer to the README files located
 * Twilio Account (SID/Auth Token)
 * Supabase Project
 * Deepgram & ElevenLabs API Keys
-* Groq API Key
+* Groq API Key.
 
 ### Deployment Overview
 
